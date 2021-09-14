@@ -4,13 +4,10 @@ FROM alpine:${ALPINE_VERSION}
 
 ENV MKCERT_VERSION=1.4.3
 ENV CAROOT="/certs"
-ENV SERVER_HOSTNAMES="*.example.com"
-
-#ENV HOST_USER_ID ${UNSET}
+ENV SERVER_HOSTNAMES="*.localhost.dev *.example.com"
 ENV HOST_USER_ID 1000
 ENV HOST_USER_NAME user
 
-#ENV SERVER_HOSTNAMES="*.localhost.dev *.example.com"
 #ENV PATH="/usr/local/bin:${PATH}"
 #ENV TRUST_STORES=""
 #ENV JKS_PASSWORD="super-secret"
