@@ -7,4 +7,12 @@ Supported tags and respective `Dockerfile` links:
 
 Usage:
 
-    docker run --rm -v $PWD:/certs -e SERVER_HOSTNAMES="*.localhost.dev *.example.com" -it vavyskov/mkcert:1.4.3-alpine3.13
+    docker run --rm -v $PWD:/certs -it vavyskov/mkcert:1.4.3-alpine3.13
+
+    docker run --rm \
+      -v $PWD:/certs \
+      -e CAROOT="/certs" \
+      -e SERVER_HOSTNAMES="*.localhost.dev *.example.com" \
+      -e HOST_USER_ID="1000" \
+      -e HOST_USER_NAME="user" \
+      -it vavyskov/mkcert:1.4.3-alpine3.13

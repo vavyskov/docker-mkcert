@@ -12,37 +12,26 @@ fi
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
+## $SERVER_HOSTNAMES without quotes
 mkcert -cert-file "$CAROOT/server.crt" -key-file "$CAROOT/server.key" $SERVER_HOSTNAMES
 mkcert -pkcs12 -p12-file "$CAROOT/server.p12" $SERVER_HOSTNAMES
-
-#echo "Creating truststore..."
-#echo
-#keytool -import -file "$CAROOT/rootCA.pem" -alias RootCA -keystore "$CAROOT/truststore.jks" -storepass "$JKS_PASSWORD" -trustcacerts -noprompt
-#echo
-#echo "Creating keystore..."
-#echo
-#keytool -importkeystore -srckeystore "$CAROOT/server.p12" -srcstorepass "changeit" -srcstoretype pkcs12 -destkeystore "$CAROOT/keystore.jks" -deststoretype jks -deststorepass "$JKS_PASSWORD" -destkeypass "$JKS_PASSWORD" -noprompt
-#echo
-#echo "Importing Root CA certificate into keystore..."
-#echo
-#keytool -import -file "$CAROOT/rootCA.pem" -alias RootCA -keystore "$CAROOT/keystore.jks" -storepass "$JKS_PASSWORD" -trustcacerts -noprompt
 
 ## Simplification
 HOST_GROUP_NAME=${HOST_USER_NAME}
 HOST_GROUP_ID=${HOST_USER_ID}
 
 ## Test if string is not empty
-if [ -n "${HOST_USER_ID}" ]; then
+if [ -n "${HOST_USER_NAME}" ] && [ -n "${HOST_USER_ID}" ]; then
 
     ## Test if userId is not rootId
-    if [ "${HOST_USER_ID}" != 0 ]; then
+    if [ "${HOST_USER_NAME}" != 0 ] && [ "${HOST_USER_ID}" != 0 ]; then
 
         ## Create user with hostId in container
-        groupadd -g ${HOST_GROUP_ID} ${HOST_GROUP_NAME}
-        useradd -r -m -s /sbin/nologin -g ${HOST_GROUP_NAME} -u ${HOST_USER_ID} ${HOST_USER_NAME}
+        groupadd -g "${HOST_GROUP_ID}" "${HOST_GROUP_NAME}"
+        useradd -r -m -s /sbin/nologin -g "${HOST_GROUP_NAME}" -u "${HOST_USER_ID}" "${HOST_USER_NAME}"
 
         ## Change file permission
-        chown -R ${HOST_USER_NAME}:${HOST_GROUP_NAME} ${CAROOT}/*
+        chown -R "${HOST_USER_NAME}":"${HOST_GROUP_NAME}" "${CAROOT}"/*
 
     fi
 
