@@ -1,12 +1,13 @@
-ARG ALPINE_VERSION=3.13
+ARG ALPINE_VERSION="3.13"
 
 FROM alpine:${ALPINE_VERSION}
 
-ENV MKCERT_VERSION 1.4.3
-ENV CAROOT /certs
-ENV SERVER_HOSTNAMES *.localhost.dev *.example.com
-ENV HOST_USER_ID 1000
-ENV HOST_USER_NAME user
+ARG MKCERT_VERSION="1.4.3"
+
+ENV CAROOT="/root/.local/share/mkcert"
+ENV SERVER_HOSTNAMES="*.corp *.domain *.example *.home *.host *.invalid *.lan *.local *.localdomain *.example.com *.example.net *.example.org *.example.edu"
+ENV HOST_USER_ID="${UNSET}"
+ENV HOST_USER_NAME="${UNSET}"
 
 RUN echo "mkcert" \
 &&  apk add --no-cache --virtual .build-deps \
@@ -21,7 +22,7 @@ RUN echo "System tools" \
         ## Users
         shadow
 
-WORKDIR /certs
+WORKDIR ${CAROOT}
 
 ## Initialize container
 COPY config/entrypoint.sh /usr/local/bin/
