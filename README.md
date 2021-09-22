@@ -18,3 +18,13 @@ Usage:
       -e HOST_USER_ID="1000" \
       -e HOST_USER_NAME="user" \
       vavyskov/mkcert:1.4.3-alpine3.13
+
+## Adding trusted root certificate authority
+1. Operating system
+   - **Linux (Debian)**:
+
+         sudo cp rootCA.pem /usr/local/share/ca-certificates/
+         sudo update-ca-certificates
+
+2. Browsers:
+   - **Chrome**: Settings -> Privacy and security -> Security -> Manage certificates -> Authorities -> Import (rootCA.pem)
