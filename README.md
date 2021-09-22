@@ -12,7 +12,9 @@ Usage:
     docker run --rm \
       -v $PWD:/certs \
       -e CAROOT="/certs" \
-      -e SERVER_HOSTNAMES="*.corp *.domain *.example *.home *.host *.invalid *.lan *.local *.localdomain *.example.com *.example.net *.example.org *.example.edu" \
+      -e SERVER_HOSTNAMES="*.localhost.dev *.localhost.test *.example.com *.example.net \
+          *.example.org *.example.edu project.corp project.domain project.example project.home \
+          project.host project.invalid project.lan project.local project.localdomain" \
       -e HOST_USER_ID="1000" \
       -e HOST_USER_NAME="user" \
       vavyskov/mkcert:1.4.3-alpine3.13
