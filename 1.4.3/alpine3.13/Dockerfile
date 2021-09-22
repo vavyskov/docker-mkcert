@@ -5,7 +5,7 @@ FROM alpine:${ALPINE_VERSION}
 ARG MKCERT_VERSION="1.4.3"
 
 ENV CAROOT="/root/.local/share/mkcert"
-ENV SERVER_HOSTNAMES="*.corp *.domain *.example *.home *.host *.invalid *.lan *.local *.localdomain *.example.com *.example.net *.example.org *.example.edu"
+ENV SERVER_HOSTNAMES="*.localhost.dev *.localhost.test *.example.com *.example.net *.example.org *.example.edu project.corp project.domain project.example project.home project.host project.invalid project.lan project.local project.localdomain"
 ENV HOST_USER_ID="${UNSET}"
 ENV HOST_USER_NAME="${UNSET}"
 
