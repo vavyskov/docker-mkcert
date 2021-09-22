@@ -10,8 +10,8 @@ Usage:
     docker run --rm -v $PWD:/root/.local/share/mkcert vavyskov/mkcert:1.4.3-alpine3.13
 
     docker run --rm \
-      -v $PWD:/certs \
-      -e CAROOT="/certs" \
+      -v $PWD:/certificates \
+      -e CAROOT="/certificates" \
       -e SERVER_HOSTNAMES="*.localhost.dev *.localhost.test *.example.com *.example.net \
           *.example.org *.example.edu project.corp project.domain project.example project.home \
           project.host project.invalid project.lan project.local project.localdomain" \
