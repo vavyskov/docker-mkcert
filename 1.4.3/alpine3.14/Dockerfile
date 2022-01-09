@@ -1,11 +1,12 @@
-ARG ALPINE_VERSION="3.13"
+ARG ALPINE_VERSION="3.14"
 
 FROM alpine:${ALPINE_VERSION}
 
 ARG MKCERT_VERSION="1.4.3"
 
 ENV CAROOT="/root/.local/share/mkcert"
-ENV SERVER_HOSTNAMES="*.localhost.dev *.localhost.test *.example.com *.example.net *.example.org *.example.edu project.corp project.domain project.example project.home project.host project.invalid project.lan project.local project.localdomain"
+ENV MKCERT_HOSTNAMES="*.localhost.dev *.localhost.test *.example.com *.example.net *.example.org *.example.edu project.corp project.domain project.example project.home project.host project.invalid project.lan project.local project.localdomain"
+ENV MKCERT_FILE_NAME="example.com"
 ENV HOST_USER_ID="${UNSET}"
 ENV HOST_USER_NAME="${UNSET}"
 

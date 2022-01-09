@@ -5,16 +5,16 @@ if [ -z "$CAROOT" ]; then
   exit 1
 fi
 
-if [ -z "$SERVER_HOSTNAMES" ]; then
-  echo "SERVER_HOSTNAMES environment variable not defined. Please set SERVER_HOSTNAMES to the desired hostnames (each hostname being separated by a space)."
+if [ -z "$MKCERT_HOSTNAMES" ]; then
+  echo "MKCERT_HOSTNAMES environment variable not defined. Please set MKCERT_HOSTNAMES to the desired hostnames (each hostname being separated by a space)."
   exit 1
 fi
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
-## $SERVER_HOSTNAMES without quotes
-mkcert -cert-file "$CAROOT/server.crt" -key-file "$CAROOT/server.key" $SERVER_HOSTNAMES
-mkcert -pkcs12 -p12-file "$CAROOT/server.p12" $SERVER_HOSTNAMES
+## $MKCERT_HOSTNAMES without quotes
+mkcert -cert-file "$CAROOT/$MKCERT_FILE_NAME.crt" -key-file "$CAROOT/$MKCERT_FILE_NAME.key" $MKCERT_HOSTNAMES
+mkcert -pkcs12 -p12-file "$CAROOT/$MKCERT_FILE_NAME.p12" $MKCERT_HOSTNAMES
 
 ## Simplification
 HOST_GROUP_NAME=${HOST_USER_NAME}
