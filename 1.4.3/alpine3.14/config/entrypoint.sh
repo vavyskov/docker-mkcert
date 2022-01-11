@@ -16,6 +16,9 @@ set -e # Exit immediately if a command exits with a non-zero status.
 mkcert -cert-file "$CAROOT/$MKCERT_FILE_NAME.crt" -key-file "$CAROOT/$MKCERT_FILE_NAME.key" $MKCERT_HOSTNAMES
 mkcert -pkcs12 -p12-file "$CAROOT/$MKCERT_FILE_NAME.p12" $MKCERT_HOSTNAMES
 
+mv "$CAROOT"/rootCA.pem "$CAROOT"/rootCertificateAuthority.crt
+mv "$CAROOT"/rootCA-key.pem "$CAROOT"/rootCertificateAuthority.key
+
 ## Simplification
 HOST_GROUP_NAME=${HOST_USER_NAME}
 HOST_GROUP_ID=${HOST_USER_ID}
