@@ -3,7 +3,7 @@
 Simple tool for making locally-trusted development certificates
 
 Supported tags and respective `Dockerfile` links:
-- [`1.4.3-alpine3.14`](https://github.com/vavyskov/docker-mkcert/tree/master/1.4.3/alpine3.14)
+- [`1.4.3-1.0.0`](https://github.com/vavyskov/docker-mkcert/tree/master/1.4.3/alpine3.15)
 
 Usage:
 
