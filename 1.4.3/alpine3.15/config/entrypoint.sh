@@ -21,6 +21,7 @@ mv "$CAROOT"/rootCA-key.pem "$CAROOT"/rootCA.key
 
 cp "$CAROOT"/example.com.key "$CAROOT"/example.com.pem
 cat "$CAROOT"/example.com.crt >> "$CAROOT"/example.com.pem
+chmod +r "$CAROOT"/example.com.pem
 
 ## Simplification
 HOST_GROUP_NAME=${HOST_USER_NAME}
