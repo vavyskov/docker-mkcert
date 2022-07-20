@@ -3,11 +3,11 @@
 Simple tool for making locally-trusted development certificates
 
 Supported tags and respective `Dockerfile` links:
-- [`1.4.3-1.0.0`](https://github.com/vavyskov/docker-mkcert/tree/master/1.4.3/alpine3.15)
+- [`1.4.3-1.1.0`](https://github.com/vavyskov/docker-mkcert/tree/master/1.4.3/alpine3.16)
 
 Usage:
 
-    docker run --rm -v $PWD:/root/.local/share/mkcert vavyskov/mkcert:1.4.3-alpine3.14
+    docker run --rm -v $PWD:/root/.local/share/mkcert vavyskov/mkcert:1.4.3-1.1.0
 
     docker run --rm \
       -v $PWD:/certificates \
@@ -17,7 +17,7 @@ Usage:
           project.host project.invalid project.lan project.local project.localdomain" \
       -e HOST_USER_ID="1000" \
       -e HOST_USER_NAME="user" \
-      vavyskov/mkcert:1.4.3-alpine3.14
+      vavyskov/mkcert:1.4.3-1.1.0
 
 ## Adding trusted root certificate authority
 1. Operating system
